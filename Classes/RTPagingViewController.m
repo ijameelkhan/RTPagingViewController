@@ -371,7 +371,10 @@
     }
     _previousController = nil;
     _nextController = nil;
-
+    
+    if (self.onIndexChanged) {
+        self.onIndexChanged(self.currentControllerIndex);
+    }
 }
 
 - (void)updateOffset
@@ -567,6 +570,12 @@
         _scrollView.bounces = NO;
         _scrollView.autoresizesSubviews = NO;
         _scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        
+        if (self.doesStopPagination == true) {
+            _scrollView.scrollEnabled = false;
+
+        }
+        
     }
     return _scrollView;
 }

@@ -29,9 +29,11 @@ IB_DESIGNABLE
     UIViewController            * _previousController;
     UIViewController            * _nextController;
 }
+@property (nonatomic, copy) void (^onIndexChanged)(NSInteger index);
 @property (nonatomic, strong, readonly) RTGridContainerView *titleView;
 @property (nonatomic, strong) UIView *titleIndicatorView;
 @property (nonatomic, assign) CGPoint indicatorOffset;
+
 
 @property (nonatomic, strong) NSArray *controllers;
 @property (weak, nonatomic, readonly) UIViewController *currentViewController;
@@ -49,6 +51,10 @@ IB_DESIGNABLE
 - (void)appendPage:(UIViewController *)controller;
 - (void)removePage:(UIViewController *)controller;
 - (void)removePageAtIndex:(NSInteger)index;
+
+
+@property (nonatomic, assign) BOOL doesStopPagination;
+
 
 @end
 
